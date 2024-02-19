@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import logo from '../../../public/logo.svg';
-import LoginForm from '@/components/LoginForm';
-import SignInForm from '@/components/SignInForm';
+import AuthForm from '@/components/AuthForm';
 
 export default function Page() {
 	return (
@@ -32,7 +31,7 @@ export default function Page() {
 				</div>
 			</div>
 			<main className='bg-black/80 w-5/12'>
-				<SignInForm />
+				<AuthForm mode='signin' />
 			</main>
 		</div>
 	);

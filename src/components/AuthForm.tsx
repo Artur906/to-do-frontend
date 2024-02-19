@@ -4,23 +4,45 @@ import { FormEvent, useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 import { RiEyeCloseLine } from 'react-icons/ri';
 
-const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+const onSubmit = async (
+	e: FormEvent<HTMLFormElement>,
+	mode: 'login' | 'signin'
+) => {
 	e.preventDefault();
 
-	console.log('uepaaaaa');
+	if (mode === 'login') {
+		console.log('login');
+	} else {
+		console.log('signin');
+	}
 };
 
-export default function SignInForm() {
+interface AuthFormProps {
+	mode: 'login' | 'signin';
+}
+
+export default function AuthForm({ mode = 'login' }: AuthFormProps) {
 	const [showPassword, setShowPassword] = useState(false);
+
+	const headerTitle = { login: 'LOGIN', signin: 'SIGN IN' }[mode];
+	const welcomeMessage = {
+		login: 'Good to see you again!',
+		signin: `Hello! Lets get started`,
+	}[mode];
+
+	const redirectMessage = {
+		login: 'Do not has a account?',
+		signin: `Already has a account?`,
+	}[mode];
 
 	return (
 		<form
-			onSubmit={onSubmit}
+			onSubmit={(e) => onSubmit(e, mode)}
 			className='p-24 w-full h-full flex flex-col justify-center'
 		>
 			<header className='mb-16'>
-				<h1 className='font-bold text-5xl mb-2'>SIGN IN</h1>
-				<p>Hello! {"Let's"} get started</p>
+				<h1 className='font-bold text-5xl mb-2'>{headerTitle}</h1>
+				<p>{welcomeMessage}</p>
 			</header>
 
 			<label htmlFor='email'>Email</label>
@@ -49,9 +71,12 @@ export default function SignInForm() {
 
 			<footer className='flex items-center justify-between'>
 				<p>
-					Already has a account?{' '}
-					<Link href={'/login'} className='font-bold hover:text-teal-400'>
-						Login
+					{redirectMessage}{' '}
+					<Link
+						href={mode === 'login' ? '/sign-in' : '/login'}
+						className='font-bold hover:text-teal-400'
+					>
+						{mode === 'login' ? 'Sign In' : 'Login'}
 					</Link>
 				</p>
 
@@ -59,7 +84,7 @@ export default function SignInForm() {
 					type='submit'
 					className='py-3 px-7 bg-gray-950 rounded transition-colors hover:bg-teal-400 hover:text-gray-950'
 				>
-					Sign in
+					{mode === 'login' ? 'Login' : 'Sign In'}
 				</button>
 			</footer>
 		</form>
