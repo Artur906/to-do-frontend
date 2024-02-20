@@ -6,33 +6,33 @@ import { RiEyeCloseLine } from 'react-icons/ri';
 
 const onSubmit = async (
 	e: FormEvent<HTMLFormElement>,
-	mode: 'login' | 'signin'
+	mode: 'login' | 'signup'
 ) => {
 	e.preventDefault();
 
 	if (mode === 'login') {
 		console.log('login');
 	} else {
-		console.log('signin');
+		console.log('signup');
 	}
 };
 
 interface AuthFormProps {
-	mode: 'login' | 'signin';
+	mode: 'login' | 'signup';
 }
 
 export default function AuthForm({ mode = 'login' }: AuthFormProps) {
 	const [showPassword, setShowPassword] = useState(false);
 
-	const headerTitle = { login: 'LOGIN', signin: 'SIGN IN' }[mode];
+	const headerTitle = { login: 'LOGIN', signup: 'SIGN UP' }[mode];
 	const welcomeMessage = {
 		login: 'Good to see you again!',
-		signin: `Hello! Lets get started`,
+		signup: `Hello! Lets get started`,
 	}[mode];
 
 	const redirectMessage = {
 		login: 'Do not has a account?',
-		signin: `Already has a account?`,
+		signup: `Already has a account?`,
 	}[mode];
 
 	return (
@@ -73,10 +73,10 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
 				<p>
 					{redirectMessage}{' '}
 					<Link
-						href={mode === 'login' ? '/sign-in' : '/login'}
+						href={mode === 'login' ? '/sign-up' : '/login'}
 						className='font-bold hover:text-teal-400'
 					>
-						{mode === 'login' ? 'Sign In' : 'Login'}
+						{mode === 'login' ? 'Sign Up' : 'Login'}
 					</Link>
 				</p>
 
@@ -84,7 +84,7 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
 					type='submit'
 					className='py-3 px-7 bg-gray-950 rounded transition-colors hover:bg-teal-400 hover:text-gray-950'
 				>
-					{mode === 'login' ? 'Login' : 'Sign In'}
+					{mode === 'login' ? 'Login' : 'Sign Up'}
 				</button>
 			</footer>
 		</form>

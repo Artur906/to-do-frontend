@@ -31,7 +31,7 @@ export default function Page() {
 				</div>
 			</div>
 			<main className='bg-black/80 w-5/12'>
-				<AuthForm mode='signin' />
+				<AuthForm mode='signup' />
 			</main>
 		</div>
 	);
