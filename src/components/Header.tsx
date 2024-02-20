@@ -4,7 +4,7 @@ import UserHeaderDropdown from './UserHeaderDropdown';
 
 export default function Header() {
 	return (
-		<header className='bg-inherit bg-gradient-to-r from-teal-800 to-teal-500 w-full'>
+		<header className='bg-inherit bg-gradient-to-r from-teal-800 to-teal-500 w-full z-10'>
 			<div className='py-3 w-full h-[97%] bg-zinc-900 flex justify-between items-center'>
 				{/* logo */}
 				<div className='flex items-center gap-2'>
