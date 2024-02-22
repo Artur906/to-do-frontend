@@ -5,7 +5,7 @@ import { IoIosArrowDown, IoMdSettings } from 'react-icons/io';
 import { PiSignOut } from 'react-icons/pi';
 import { useState } from 'react';
 
-export default function UserHeaderDropdown() {
+export default function UserHeaderDropdown({ user }: any) {
 	const [active, setActive] = useState(false);
 
 	return (
@@ -22,7 +22,7 @@ export default function UserHeaderDropdown() {
 					size={15}
 					className={active ? 'rotate-180 transition-all' : 'transition-all'}
 				/>
-				<span>Artur Dantas</span>
+				<span>{user?.username}</span>
 				<Image
 					alt='profile picture'
 					src={blankProfile}

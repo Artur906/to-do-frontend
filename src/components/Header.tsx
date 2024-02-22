@@ -2,7 +2,7 @@ import Image from 'next/image';
 import logo from '../../public/logo.svg';
 import UserHeaderDropdown from './UserHeaderDropdown';
 
-export default function Header() {
+export default function Header({ user }: any) {
 	return (
 		<header className='bg-inherit bg-gradient-to-r from-teal-800 to-teal-500 w-full z-10'>
 			<div className='py-3 w-full h-[97%] bg-zinc-900 flex justify-between items-center'>
@@ -20,7 +20,7 @@ export default function Header() {
 				</div>
 
 				{/* user profile*/}
-				<UserHeaderDropdown />
+				<UserHeaderDropdown user={user} />
 			</div>
 		</header>
 	);

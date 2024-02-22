@@ -7,7 +7,13 @@ import { useState } from 'react';
 import { ITask } from '@/models/Task';
 import TaskInput from '@/components/TaskInput';
 
-export default function Home() {
+export default function Home({
+	authToken,
+	user,
+}: {
+	authToken: string;
+	user: any;
+}) {
 	const [tasks, setTasks] = useState<ITask[]>([
 		{
 			task_name: 'first fake task',
@@ -16,11 +22,13 @@ export default function Home() {
 		},
 	]);
 
+	console.log(user.username);
+
 	return (
 		<main className='w-8/12 max-w-4x m-auto h-full flex flex-col items-center relative'>
 			<QueryClientProvider client={queryClient}>
-				<Header />
-				<TaskList tasks={tasks} />
+				<Header user={user} />
+				<TaskList authToken={authToken} />
 				<TaskInput setTasks={setTasks} />
 			</QueryClientProvider>
 		</main>
